@@ -1,0 +1,61 @@
+﻿@model ViewModelDemo.ViewModels.ProductViewModel
+
+@{
+    ViewBag.Title = "CreateVM";
+}
+
+<h2>Create (using ProductViewModel)</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.name)
+            @Html.ValidationMessageFor(model => model.Product.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.description)
+            @Html.ValidationMessageFor(model => model.Product.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Product.price)
+            @Html.ValidationMessageFor(model => model.Product.price)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Product.categoryID)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Product.categoryID, 
+                Model.CategoryList, 
+                "Please select...")
+            @Html.ValidationMessageFor(model => model.Product.categoryID)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

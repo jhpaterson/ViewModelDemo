@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ViewModelDemo.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")<br /> 
+    @Html.ActionLink("Create New (View Model)", "CreateVM")<br /> 
+    @Html.ActionLink("Create New (Mapped View Model)", "CreateMVM")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            name
+        </th>
+        <th>
+            description
+        </th>
+        <th>
+            price
+        </th>
+        <th>
+            category
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.productID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.productID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.productID })
+        </td>
+        <td>
+            @item.name
+        </td>
+        <td>
+            @item.description
+        </td>
+        <td>
+            @String.Format("{0:F}", item.price)
+        </td>
+        <td>
+            @item.Category.name
+        </td>
+    </tr>
+}
+
+</table>
+
