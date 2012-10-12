@@ -11,7 +11,7 @@
 
 
 @using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
+    @Html.ValidationMessageFor(model => model.Product)
     <fieldset>
         <legend>Product</legend>
 
